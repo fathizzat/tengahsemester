@@ -3,21 +3,18 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
-
-# --- ADD THIS BLOCK ---
-permissions:
+      - main # Set a branch to deploy
+      
+permissions: 
   contents: write
-# ----------------------
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v2
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./html/  # Based on your directory structure
+          publish_dir: ./html/
